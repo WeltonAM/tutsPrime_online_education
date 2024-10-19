@@ -24,3 +24,6 @@ Content-Type: application/json
 {
     "status": true
 }
+
+### Delete a task
+DELETE http://localhost:8000/api/v1/tasks/11
