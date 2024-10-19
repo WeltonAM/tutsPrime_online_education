@@ -1,2 +1,10 @@
 ### Get all tasks
 GET http://localhost:8000/api/v1/tasks
+
+### Create a new task
+POST http://localhost:8000/api/v1/tasks
+Content-Type: application/json
+
+{
+    "name": "Buy milk"
+}
