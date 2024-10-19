@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Api\version1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTaskRequest;
+use App\Http\Requests\UpdateTaskRequest;
 use App\Http\Resources\TaskResource;
 use App\Models\Task;
-use Illuminate\Contracts\Cache\Store;
-use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
@@ -26,6 +25,13 @@ class TaskController extends Controller
 
     public function show(Task $task)
     {
+        return TaskResource::make($task);
+    }
+
+    public function update(UpdateTaskRequest $request, Task $task)
+    {
+        $task->update($request->validated());
+
         return TaskResource::make($task);
     }
 }

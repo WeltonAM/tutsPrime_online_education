@@ -8,3 +8,19 @@ Content-Type: application/json
 {
     "name": "Buy milk"
 }
+
+### Update a task
+PUT http://localhost:8000/api/v1/tasks/1
+Content-Type: application/json
+
+{
+    "name": "Task one"
+}
+
+### Mark a task as complete
+PATCH http://localhost:8000/api/v1/tasks/1/complete
+Content-Type: application/json
+
+{
+    "status": true
+}
