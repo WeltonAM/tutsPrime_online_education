@@ -1,0 +1,28 @@
+### Obter CSRF Token
+GET http://localhost:8000/sanctum/csrf-cookie
+
+### Login
+POST http://localhost:8000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "jany.hill@example.com",
+    "password": "password"
+}
+
+### Logout
+POST http://localhost:8000/api/auth/logout
+Authorization: Bearer 6|PbhVD3fPzH3fUWOK6fiymMwGqRoe2HoEFNFdl9rE289947ca
+Content-Type: application/json
+
+
+### Register
+POST http://localhost:8000/api/auth/register
+Content-Type: application/json
+
+{
+    "name": "Kevin Fisher",
+    "email": "kf@example.org",
+    "password": "password",
+    "password_confirmation": "password"
+}

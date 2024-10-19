@@ -1,0 +1,36 @@
+### Get all tasks
+GET http://localhost:8000/api/v2/tasks
+Content-Type: application/json
+Authorization: Bearer 1|XJhAXxt29HoPOUhCvmh9rE0V8UA09DjGuasngPLW8bc125c0
+
+### Create a new task
+POST http://localhost:8000/api/v2/tasks
+Content-Type: application/json
+Authorization: Bearer 6|PbhVD3fPzH3fUWOK6fiymMwGqRoe2HoEFNFdl9rE289947ca
+
+{
+    "name": "Buy milk"
+}
+
+### Update a task
+PUT http://localhost:8000/api/v2/tasks/1
+Content-Type: application/json
+Authorization: Bearer 1|XJhAXxt29HoPOUhCvmh9rE0V8UA09DjGuasngPLW8bc125c0
+
+{
+    "name": "Task one"
+}
+
+### Mark a task as complete
+PATCH http://localhost:8000/api/v2/tasks/1/complete
+Content-Type: application/json
+Authorization: Bearer 1|XJhAXxt29HoPOUhCvmh9rE0V8UA09DjGuasngPLW8bc125c0
+
+{
+    "status": true
+}
+
+### Delete a task
+DELETE http://localhost:8000/api/v2/tasks/11
+Authorization: Bearer 1|XJhAXxt29HoPOUhCvmh9rE0V8UA09DjGuasngPLW8bc125c0
+
