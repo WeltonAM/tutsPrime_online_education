@@ -23,7 +23,7 @@ PATCH http://localhost:8000/api/v1/tasks/1/complete
 Content-Type: application/json
 
 {
-    "status": true
+    "is_completed": true
 }
 
 ### Delete a task

@@ -32,7 +32,7 @@ Content-Type: application/json
 Authorization: Bearer 1|XJhAXxt29HoPOUhCvmh9rE0V8UA09DjGuasngPLW8bc125c0
 
 {
-    "status": true
+    "is_completed": true
 }
 
 ### Delete a task

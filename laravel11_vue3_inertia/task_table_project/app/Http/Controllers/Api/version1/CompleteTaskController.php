@@ -15,7 +15,7 @@ class CompleteTaskController extends Controller
     public function __invoke(Request $request, Task $task)
     {
 
-        $task->status = $request->status;
+        $task->is_completed = $request->is_completed;
         $task->save();
 
         return response()->json($task);
