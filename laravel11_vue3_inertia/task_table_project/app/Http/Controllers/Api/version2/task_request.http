@@ -39,3 +39,7 @@ Authorization: Bearer 1|XJhAXxt29HoPOUhCvmh9rE0V8UA09DjGuasngPLW8bc125c0
 DELETE http://localhost:8000/api/v2/tasks/11
 Authorization: Bearer 1|XJhAXxt29HoPOUhCvmh9rE0V8UA09DjGuasngPLW8bc125c0
 
+### Get all summaries
+GET http://localhost:8003/api/v2/summaries
+Content-Type: application/json
+Authorization: Bearer 1|0Ue62SecA7R5DmM9M8FoRpo7rMbQAeMC0vzkzMAX2e562ae3

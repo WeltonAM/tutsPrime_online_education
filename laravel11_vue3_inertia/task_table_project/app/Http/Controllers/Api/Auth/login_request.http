@@ -2,11 +2,11 @@
 GET http://localhost:8000/sanctum/csrf-cookie
 
 ### Login
-POST http://localhost:8000/api/auth/login
+POST http://localhost:8003/api/auth/login
 Content-Type: application/json
 
 {
-    "email": "jany.hill@example.com",
+    "email": "bettie.donnelly@example.net",
     "password": "password"
 }
 
