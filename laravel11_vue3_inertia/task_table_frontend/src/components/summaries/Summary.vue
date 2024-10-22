@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-defineProps({
-    task: Object,
-});
+    defineProps({
+        task: Object,
+    });
 </script>
