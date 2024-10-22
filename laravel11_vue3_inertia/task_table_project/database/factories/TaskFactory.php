@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Priority;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +18,9 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->sentence(2),
             'is_completed' => $this->faker->boolean(),
+            'priority_id' => rand(0, 1) === 0 ? NULL : Priority::pluck('id')->random(),
         ];
     }
 }

@@ -47,7 +47,7 @@ export const useTaskStore = defineStore("taskStore", () => {
     
     const currentTask = tasks.value.find((item) => item.id === task.id);
     
-    currentTask.is_completed = updatedTask.data.is_completed;
+    currentTask.is_completed = updatedTask.is_completed;
   };
 
   const handleRemovedTask = async (task) => {

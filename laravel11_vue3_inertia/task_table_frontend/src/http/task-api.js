@@ -3,7 +3,7 @@ import api from "./api";
 const apiPath = import.meta.env.VITE_API_PATH;
 const resource = apiPath + "/tasks";
 
-export const allTasks = () => api.get(resource);
+export const allTasks = () => api.get(resource + '?sort_by=priority');
 
 export const createTask = (task) => api.post(resource, task);
 

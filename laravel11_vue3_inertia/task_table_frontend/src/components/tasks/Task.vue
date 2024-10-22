@@ -42,7 +42,7 @@
 <script setup>
     import { computed, ref } from "vue";
     import TaskActions from "./TaskActions.vue";
-
+    
     const props = defineProps({
         task: Object,
     });

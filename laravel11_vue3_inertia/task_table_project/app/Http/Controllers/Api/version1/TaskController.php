@@ -12,13 +12,14 @@ class TaskController extends Controller
 {
     public function index()
     {
-        // return Task::all();
-        return TaskResource::collection(Task::all());
+        return TaskResource::collection(Task::with('priority')->get());
     }
 
     public function store(StoreTaskRequest $request)
     {
         $task = Task::create($request->validated());
+
+        $task->load('priority');
 
         return TaskResource::make($task);
     }
