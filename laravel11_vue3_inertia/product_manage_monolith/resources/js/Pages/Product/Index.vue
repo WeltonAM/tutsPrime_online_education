@@ -1,13 +1,61 @@
 <script setup>
+    import { ref, computed } from "vue";
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-    import { Head, Link } from '@inertiajs/vue3';
+    // import Pagination from '@/Components/Pagination.vue';
+    // import Sortable from '@/Components/Sortable.vue';
+    // import Checkbox from '@/Components/Checkbox.vue';
+    // import CheckAll from '@/Components/CheckAll.vue';
+    // import BulkEdit from './BulkEdit.vue';
+    import { Head, Link, router } from '@inertiajs/vue3';
 
-    defineProps({
+    const selectedIds = ref([]);
+    const showModal = ref(false);
+
+    const deleteRow = (id) => {
+        if (window.confirm("Are you sure?")) {
+            router.delete(route('products.destroy', id), {
+                preserveScroll: true
+            });
+        }
+    };
+
+    // const deleteSelected = () => {
+    //     if (window.confirm("Are you sure to delete selected products?")) {
+    //         router.delete(route('products.bulk-destroy', selectedIds.value.join(',')), {
+    //             preserveScroll: true,
+    //             onSuccess: () => selectedIds.value = []
+    //         });
+    //     }
+    // };
+
+    const props = defineProps({
         products: {
+            type: Object,
+            required: true
+        },
+        categories: {
             type: Array,
             required: true
+        },
+        query: {
+            type: Object,
+            default: () => ({
+                search: ''
+            })
         }
     });
+
+    // const selectedProducts = computed(() => {
+    //     return props.products.data
+    //         .filter((product) => selectedIds.value.includes(product.id))
+    //         .map((product) => ({ id: product.id, name: product.name }))
+    // });
+
+    // const handleSearch = (event) => {
+    //     router.get(route('products.index'), {
+    //         search: event.target.value
+    //     });
+    // };
 </script>
 
 <template>
@@ -35,9 +83,7 @@
 
         <div class="py-12">
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <div
-                    class="overflow-hidden bg-white shadow-sm sm:rounded-lg"
-                >
+                <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b">
@@ -67,9 +113,9 @@
                                     <td class="px-6 py-4 space-x-2">
                                         <Link :href="route('products.show', product.id)" class="font-medium text-gray-600 hover:underline">Show</Link>
 
-                                        <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
+                                        <Link :href="route('products.edit', product.id)" class="font-medium text-blue-600 hover:underline">Edit</Link>
 
-                                        <a href="#" class="font-medium text-red-600 hover:underline">Delete</a>
+                                        <a href="#" class="font-medium text-red-600 hover:underline" @click.prevent="deleteRow(product.id)">Delete</a>
                                     </td>
                                 </tr>
                             </tbody>

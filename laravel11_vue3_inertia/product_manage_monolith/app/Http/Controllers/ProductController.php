@@ -8,7 +8,6 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductResource;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -59,7 +58,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return inertia('Product/Edit', [
+            'categories' => CategoryResource::collection(Category::orderBy('name')->get()),
+            'product' => ProductResource::make($product)
+        ]);
     }
 
     /**
@@ -67,7 +69,9 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $product->update($request->validated());
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -75,6 +79,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->route('products.index');
     }
 }
