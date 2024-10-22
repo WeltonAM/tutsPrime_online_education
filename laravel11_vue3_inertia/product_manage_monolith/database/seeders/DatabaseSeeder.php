@@ -15,11 +15,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $categories = Category::factory(10)->create();
+        $categories = Category::factory(5)->create();
 
         User::factory(5)
             ->has(
-                Product::factory(10)->state( function () use ($categories) {
+                Product::factory(50)->state( function () use ($categories) {
                     return ['category_id' => $categories->random()->id];
                 })
             )
