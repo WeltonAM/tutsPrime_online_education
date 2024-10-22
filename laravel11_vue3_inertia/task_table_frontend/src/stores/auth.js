@@ -10,39 +10,40 @@ export const useAuthStore = defineStore("authStore", () => {
   
   const fetchUser = async () => {
     try {
-        const { data } = await getUser();
-        user.value = data;
-      } catch (error) {
-        user.value = null;
-      }
+      const { data } = await getUser();
+      user.value = data;
+    } catch (error) {
+      user.value = null;
+    }
   };
   
   const handleLogin = async (credentials) => {
     await csrfCookie();
+
     try {
-        await login(credentials);
-        await fetchUser();
-        errors.value = {};
-      } catch (error) {
-        if (error.response && error.response.status === 422) {
-          errors.value = error.response.data.errors;
-        }
+      await login(credentials);
+      await fetchUser();
+      errors.value = {};
+    } catch (error) {
+      if (error.response && error.response.status === 422) {
+        errors.value = error.response.data.errors;
       }
+    }
   };
   
   const handleRegister = async (newUser) => {
     await csrfCookie();
     
     try {
-        await register(newUser);
-        await handleLogin({
-          email: newUser.email,
-          password: newUser.password,
-        });
-      } catch (error) {
-        if (error.response && error.response.status === 422) {
-          errors.value = error.response.data.errors;
-        }
+      await register(newUser);
+      await handleLogin({
+        email: newUser.email,
+        password: newUser.password,
+      });
+    } catch (error) {
+      if (error.response && error.response.status === 422) {
+        errors.value = error.response.data.errors;
+      }
     }
   };
   
