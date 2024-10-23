@@ -8,12 +8,30 @@
 </p>
 
 ## How to execute de project
+Run the following commands:
 
-`composer update`
-`php artisan key:generate`
-`php artisan migrate:fresh --seed`
-`php artisan serve`
+```sh
+composer update
+```
+
+```sh
+php artisan key:generate
+```
+
+```sh
+php artisan migrate:fresh --seed
+```
+
+```sh
+php artisan serve
+```
 
 ### In another terminal
-`npm install`
-`npm run dev`
+
+```sh
+npm install
+```
+
+```sh
+npm run dev
+```
