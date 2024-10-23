@@ -14,7 +14,7 @@ Task Table System API
 - PHP 
 - Laravel
 
-### How to execute de app
+### How to execute the app
 Run the following commands:
 
 ```sh

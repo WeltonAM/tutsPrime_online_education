@@ -19,7 +19,7 @@ Product Management System for Monolith
 - Alpine JS
 - Vite
 
-### How to execute de app
+### How to execute the app
 Run the following commands:
 
 ```sh
