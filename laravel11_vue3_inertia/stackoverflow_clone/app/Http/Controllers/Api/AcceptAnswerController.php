@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Answer;
+use App\Models\Answer;
 
 class AcceptAnswerController extends Controller
 {

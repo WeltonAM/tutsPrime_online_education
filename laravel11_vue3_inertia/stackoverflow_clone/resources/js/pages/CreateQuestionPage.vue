@@ -4,13 +4,13 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center justify-content-between">
                             <h2>Ask Question</h2>
                             <div class="ml-auto">
                                 <router-link :to="{ name: 'questions' }" class="btn btn-outline-secondary">Back to all Questions</router-link>
                             </div>
                         </div>
-                        
+
                     </div>
 
                     <div class="card-body">

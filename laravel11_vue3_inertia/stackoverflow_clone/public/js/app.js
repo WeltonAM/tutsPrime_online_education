@@ -4474,9 +4474,7 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "row align-items-center"
-  }, [_c("div", {
-    staticClass: "col"
+    staticClass: "d-flex flex-col align-items-center justify-content-between"
   }, [_c("button", {
     staticClass: "btn btn-outline-secondary",
     attrs: {
@@ -4485,11 +4483,7 @@ var render = function render() {
     on: {
       click: _vm.prev
     }
-  }, [_vm._v("Newer")])]), _vm._v(" "), _c("div", {
-    staticClass: "col text-center"
-  }, [_vm._v(_vm._s(_vm.pagesInfo))]), _vm._v(" "), _c("div", {
-    staticClass: "col text-right"
-  }, [_c("button", {
+  }, [_vm._v("Newer")]), _vm._v(" "), _c("div", [_vm._v(_vm._s(_vm.pagesInfo))]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-outline-secondary",
     attrs: {
       disabled: _vm.isLast
@@ -4497,7 +4491,7 @@ var render = function render() {
     on: {
       click: _vm.next
     }
-  }, [_vm._v("Older")])])]);
+  }, [_vm._v("Older")])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -4842,7 +4836,7 @@ var render = function render() {
   }, [_c("strong", [_vm._v(_vm._s(_vm.errors["body"][0]))])]) : _vm._e()])], 1), _vm._v(" "), _c("div", {
     staticClass: "form-group"
   }, [_c("button", {
-    staticClass: "btn btn-outline-primary btn-lg",
+    staticClass: "btn btn-outline-primary btn-lg mt-3",
     attrs: {
       type: "submit"
     }
@@ -5059,7 +5053,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "card-header"
   }, [_c("div", {
-    staticClass: "d-flex align-items-center"
+    staticClass: "d-flex align-items-center justify-content-between"
   }, [_c("h2", [_vm._v("Ask Question")]), _vm._v(" "), _c("div", {
     staticClass: "ml-auto"
   }, [_c("router-link", {
@@ -5341,7 +5335,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "card-header"
   }, [_c("div", {
-    staticClass: "d-flex align-items-center"
+    staticClass: "d-flex align-items-center justify-between justify-content-between"
   }, [_c("h2", [_vm._v("All Questions")]), _vm._v(" "), _c("div", {
     staticClass: "ml-auto"
   }, [_c("router-link", {
@@ -5367,17 +5361,19 @@ render._withStripped = true;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_izitoast__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-izitoast */ "./node_modules/vue-izitoast/dist/vue-izitoast.js");
-/* harmony import */ var vue_izitoast__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_izitoast__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var izitoast_dist_css_iziToast_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! izitoast/dist/css/iziToast.min.css */ "./node_modules/izitoast/dist/css/iziToast.min.css");
-/* harmony import */ var _authorization_authorize__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./authorization/authorize */ "./resources/js/authorization/authorize.js");
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
-/* harmony import */ var _components_Spinner_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Spinner.vue */ "./resources/js/components/Spinner.vue");
+/* harmony import */ var _sass_app_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../sass/app.scss */ "./resources/sass/app.scss");
+/* harmony import */ var vue_izitoast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-izitoast */ "./node_modules/vue-izitoast/dist/vue-izitoast.js");
+/* harmony import */ var vue_izitoast__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_izitoast__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var izitoast_dist_css_iziToast_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! izitoast/dist/css/iziToast.min.css */ "./node_modules/izitoast/dist/css/iziToast.min.css");
+/* harmony import */ var _authorization_authorize__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./authorization/authorize */ "./resources/js/authorization/authorize.js");
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
+/* harmony import */ var _components_Spinner_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Spinner.vue */ "./resources/js/components/Spinner.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 __webpack_require__(/*! ./fontawesome */ "./resources/js/fontawesome.js");
@@ -5387,15 +5383,15 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 
 
 
-Vue.use((vue_izitoast__WEBPACK_IMPORTED_MODULE_0___default()));
-Vue.use(_authorization_authorize__WEBPACK_IMPORTED_MODULE_2__["default"]);
+Vue.use((vue_izitoast__WEBPACK_IMPORTED_MODULE_1___default()));
+Vue.use(_authorization_authorize__WEBPACK_IMPORTED_MODULE_3__["default"]);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-Vue.component("spinner", _components_Spinner_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
+Vue.component("spinner", _components_Spinner_vue__WEBPACK_IMPORTED_MODULE_5__["default"]);
 var app = new Vue({
   el: "#app",
   data: {
@@ -5430,7 +5426,7 @@ var app = new Vue({
       axios.interceptors.request.eject(this.interceptor);
     }
   },
-  router: _router__WEBPACK_IMPORTED_MODULE_3__["default"]
+  router: _router__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 
 /***/ }),

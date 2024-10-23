@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use App\User;
 
 class RegisterController extends Controller
 {

@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Answer;
-use App\Question;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AnswerResource;
+use App\Models\Answer;
+use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnswersController extends Controller
-{    
+{
     public function index(Question $question)
     {
         $answers = $question->answers()->with('user')->where(function ($q) {
             if (request()->has('excludes')) {
                 $q->whereNotIn('id', request()->query('excludes'));
             }
-        })->simplePaginate(3);        
+        })->simplePaginate(3);
 
         return AnswerResource::collection($answers);
     }
@@ -31,7 +32,7 @@ class AnswersController extends Controller
     {
         $answer = $question->answers()->create($request->validate([
             'body' => 'required'
-        ]) + ['user_id' => \Auth::id()]);
+        ]) + ['user_id' => Auth::id()]);
 
         if (env('APP_ENV') == 'local') sleep(2);
 
@@ -39,13 +40,13 @@ class AnswersController extends Controller
             'message' => "Your answer has been submitted successfully",
             'answer' => new AnswerResource($answer->load('user'))
         ]);
-    }    
+    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Answer  $answer
+     * @param  \App\Models\Answer  $answer
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Question $question, Answer $answer)
@@ -65,7 +66,7 @@ class AnswersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Answer  $answer
+     * @param  \App\Models\Answer  $answer
      * @return \Illuminate\Http\Response
      */
     public function destroy(Question $question, Answer $answer)

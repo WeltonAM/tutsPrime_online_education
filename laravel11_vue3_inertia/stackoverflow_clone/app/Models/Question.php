@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Parsedown;
 
 class Question extends Model
 {
@@ -93,6 +94,6 @@ class Question extends Model
 
     private function bodyHtml()
     {
-        return \Parsedown::instance()->text($this->body);
+        return Parsedown::instance()->text($this->body);
     }
 }

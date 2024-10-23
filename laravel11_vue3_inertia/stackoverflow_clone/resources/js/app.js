@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import '../sass/app.scss';
+
 require("./bootstrap");
 require("./fontawesome");
 

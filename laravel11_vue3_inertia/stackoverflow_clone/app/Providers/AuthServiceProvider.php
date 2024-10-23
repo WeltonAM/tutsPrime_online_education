@@ -2,11 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate;
+use App\Models\Answer;
+use App\Models\Question;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use App\Question;
 use App\Policies\QuestionPolicy;
-use App\Answer;
 use App\Policies\AnswerPolicy;
 use Laravel\Passport\Passport;
 

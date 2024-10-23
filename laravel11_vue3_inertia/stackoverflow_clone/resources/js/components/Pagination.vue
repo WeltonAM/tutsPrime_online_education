@@ -1,17 +1,10 @@
 <template>
-    <div class="row align-items-center">
-        <div class="col">
-            <button :disabled="isFirst" @click="prev" class="btn btn-outline-secondary">Newer</button>
-        </div>
-        <!-- 1st column -->
-    
-        <div class="col text-center">{{ pagesInfo }}</div>
-        <!-- 2nd column -->
-    
-        <div class="col text-right">
-            <button :disabled="isLast" @click="next" class="btn btn-outline-secondary">Older</button>
-        </div>
-        <!-- 3rd column -->
+    <div class="d-flex flex-col align-items-center justify-content-between">
+        <button :disabled="isFirst" @click="prev" class="btn btn-outline-secondary">Newer</button>
+
+        <div>{{ pagesInfo }}</div>
+
+        <button :disabled="isLast" @click="next" class="btn btn-outline-secondary">Older</button>
     </div>
 </template>
 
@@ -23,14 +16,14 @@ export default {
         pagesInfo () {
             let currentPage = this.meta.current_page || 1,
                 lastPage = this.meta.last_page || 1;
-                
+
             return `Page ${currentPage} of ${lastPage}`
         },
 
         isFirst () {
             return this.meta.current_page === 1;
         },
-        
+
         isLast () {
             return this.meta.current_page === this.meta.last_page;
         }

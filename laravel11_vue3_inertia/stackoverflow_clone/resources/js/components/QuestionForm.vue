@@ -12,14 +12,14 @@
             <label for="question-body">Explain you question</label>
             <m-editor :body="body" name="question-body">
                 <textarea name="body" rows="10" :class="errorClass('body')" v-model="body"></textarea>
-    
+
                 <div v-if="errors['body'][0]" class="invalid-feedback">
                     <strong>{{ errors['body'][0] }}</strong>
                 </div>
             </m-editor>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-outline-primary btn-lg">
+            <button type="submit" class="btn btn-outline-primary btn-lg mt-3">
                 <spinner :small="true" v-if="$root.loading"></spinner>
                 <span v-else>{{ buttonText }}</span>
             </button>

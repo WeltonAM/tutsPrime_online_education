@@ -13,9 +13,9 @@ Stack Overflow Clone for Monolith
 ## Tech Stack
 - PHP 
 - Laravel
-- Vue 3
-- Inertia
+- Vue 
 - SCSS
+- Bootstrap
 - Alpine JS
 - Vite
 
