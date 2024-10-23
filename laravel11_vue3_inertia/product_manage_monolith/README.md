@@ -7,7 +7,19 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## How to execute de project
+## About the project
+Product Management System for Monolith
+
+## Tech Stack
+- PHP 
+- Laravel
+- Vue 3
+- Inertia
+- Tailwind CSS
+- Alpine JS
+- Vite
+
+### How to execute de app
 Run the following commands:
 
 ```sh
