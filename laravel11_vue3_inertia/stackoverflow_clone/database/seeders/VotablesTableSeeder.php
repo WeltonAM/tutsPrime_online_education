@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\Answer;
 use App\Models\Question;
 use App\Models\User;

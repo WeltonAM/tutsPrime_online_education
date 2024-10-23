@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -42,8 +43,18 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
+        // Drop the dependent tables first
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('password_reset_tokens');
+
+        // Check if the 'questions' table exists before trying to modify it
+        if (Schema::hasTable('questions')) {
+            Schema::table('questions', function (Blueprint $table) {
+                $table->dropForeign(['user_id']);
+            });
+        }
+
+        // Drop the 'users' table
+        Schema::dropIfExists('users');
     }
 };

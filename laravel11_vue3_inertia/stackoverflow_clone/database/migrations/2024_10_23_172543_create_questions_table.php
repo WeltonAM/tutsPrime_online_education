@@ -13,20 +13,24 @@ class CreateQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('questions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title');
-            $table->string('slug')->unique();
-            $table->text('body');
-            $table->unsignedInteger('views')->default(0);
-            $table->unsignedInteger('answers')->default(0);
-            $table->integer('votes')->default(0);
-            $table->unsignedInteger('best_answer_id')->nullable();
-            $table->unsignedInteger('user_id');
-            $table->timestamps();
+        if (!Schema::hasTable('questions')) {
+            Schema::create('questions', function (Blueprint $table) {
+                $table->bigIncrements('id'); // Big integer ID for questions
+                $table->string('title');
+                $table->string('slug')->unique();
+                $table->text('body');
+                $table->unsignedInteger('views')->default(0);
+                $table->unsignedInteger('answers_count')->default(0);
+                $table->integer('votes_count')->default(0);
+                $table->unsignedBigInteger('best_answer_id')->nullable(); // Use unsignedBigInteger for foreign key
+                $table->unsignedBigInteger('user_id'); // unsignedBigInteger for foreign key
+                $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-        });
+                // Foreign key constraints
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+                $table->foreign('best_answer_id')->references('id')->on('answers')->onDelete('set null');
+            });
+        }
     }
 
     /**
