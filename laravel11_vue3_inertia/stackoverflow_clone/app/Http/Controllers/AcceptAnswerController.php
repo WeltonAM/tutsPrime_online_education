@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Answer;
+use App\Models\Answer;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AcceptAnswerController extends Controller
