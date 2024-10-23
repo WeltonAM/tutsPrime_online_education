@@ -1,29 +1,13 @@
 <?php
 
-namespace Database\Factories;
+use Faker\Generator as Faker;
 
-use App\Models\User;
-use Illuminate\Database\Eloquent\Factories\Factory;
-
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Question>
- */
-class QuestionFactory extends Factory
-{
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
-    {
-        return [
-            'title' => $this->faker->sentence(1),
-            'body' => $this->faker->text(100),
-            'slug' => $this->faker->unique()->slug(),
-            'views' => rand(0, 10),
-            'answers' => rand(0, 10),
-            'votes' => rand(-3, 10),
-        ];
-    }
-}
+$factory->define(App\Question::class, function (Faker $faker) {
+    return [
+        'title' => rtrim($faker->sentence(rand(5, 10)), "."),
+        'body' => $faker->paragraphs(rand(3, 7), true),
+        'views' => rand(0, 10),
+        // 'answers_count' => rand(0, 10),
+        // 'votes_count' => rand(-3, 10)
+    ];
+});
