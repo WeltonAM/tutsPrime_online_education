@@ -1,7 +1,7 @@
 <template>
     <div class="container" v-if="question.id">
         <question :question="question"></question>
-        <answers :question="question"></answers>        
+        <answers :question="question"></answers>
     </div>
 </template>
 
@@ -11,7 +11,7 @@ import Answers from '../components/Answers.vue';
 
 export default {
     components: { Question, Answers },
-    
+
     props: ['slug'],
 
     data () {
