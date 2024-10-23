@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BulkUpdateProductRequest;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -16,12 +17,33 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = auth()->user()->products()->latest()->paginate(10);
-
-        // return ProductResource::collection($products);
+        $products = auth()
+            ->user()
+            ->products()
+            ->where(function ($query) {
+                if($search = request()->get('search')) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhereHas('category', function ($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%');
+                    });
+                }
+            })
+            ->when(in_array(request()->query('sort_by'), ['name', 'price', 'weight']), function ($query) {
+                $query->latest();
+            })
+            ->when(request()->query('sort_by'), function ($query) {
+                $sortBy = request()->query('sort_by');
+                $field = ltrim($sortBy, '-');
+                $direction = $sortBy[0] === '-' ? 'desc' : 'asc';
+                $query->orderBy($field, $direction);
+            })
+            ->paginate(10)
+            ->withQueryString();
 
         return inertia('Product/Index', [
-            'products' => ProductResource::collection($products)
+            'categories' => CategoryResource::collection(Category::orderBy('name')->get()),
+            'products' => ProductResource::collection($products),
+            'query' => (object) request()->query()
         ]);
     }
 
@@ -79,6 +101,18 @@ class ProductController extends Controller
     }
 
     /**
+     * Update the specified resource in storage.
+     */
+    public function bulkUpdate(BulkUpdateProductRequest $request)
+    {
+        Product::whereIn('id', $request->product_ids)->update([
+            'category_id' => $request->category_id
+        ]);
+
+        return redirect()->route('products.index')->with('message', 'Selected products updated successfully.');
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Product $product)
@@ -88,5 +122,18 @@ class ProductController extends Controller
         return redirect()
             ->route('products.index')
             ->with('message', 'Product deleted successfully.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function bulkDestroy(string $ids)
+    {
+        $ids = explode(',', $ids);
+        Product::destroy($ids);
+
+        return redirect()
+            ->route('products.index')
+            ->with('message', 'Selected products deleted successfully.');
     }
 }
