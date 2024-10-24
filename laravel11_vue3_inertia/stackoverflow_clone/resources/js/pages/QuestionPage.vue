@@ -28,7 +28,8 @@ export default {
         fetchQuestion () {
             axios.get(`/questions/${this.slug}`)
                  .then(({ data }) => {
-                     this.question = data.data
+                    this.question = data
+                    console.log(data)
                  })
                  .catch(error => console.log(error))
         }

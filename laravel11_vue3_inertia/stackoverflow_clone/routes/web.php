@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\AcceptAnswerController;
-use App\Http\Controllers\AnswersController;
-use App\Http\Controllers\FavoritesController;
+use App\Http\Controllers\Api\AcceptAnswerController;
+use App\Http\Controllers\Api\AnswersController;
+use App\Http\Controllers\Api\FavoritesController;
+use App\Http\Controllers\Api\QuestionsController;
+use App\Http\Controllers\Api\VoteAnswerController;
+use App\Http\Controllers\Api\VoteQuestionController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\QuestionsController;
-use App\Http\Controllers\VoteAnswerController;
-use App\Http\Controllers\VoteQuestionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 

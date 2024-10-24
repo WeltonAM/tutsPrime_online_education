@@ -50,6 +50,7 @@ class QuestionsController extends Controller
     public function show(Question $question)
     {
         return response()->json([
+            'id'        => $question->id,
             'title'     => $question->title,
             'body'      => $question->body,
             'body_html' => $question->body_html

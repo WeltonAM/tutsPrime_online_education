@@ -4003,7 +4003,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
       axios.get("/questions/".concat(this.slug)).then(function (_ref) {
         var data = _ref.data;
-        _this.question = data.data;
+        _this.question = data;
+        console.log(data);
       })["catch"](function (error) {
         return console.log(error);
       });

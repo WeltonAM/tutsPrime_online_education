@@ -13,6 +13,7 @@ class AnswersController extends Controller
 {
     public function index(Question $question)
     {
+        dd($question);
         $answers = $question->answers()->with('user')->where(function ($q) {
             if (request()->has('excludes')) {
                 $q->whereNotIn('id', request()->query('excludes'));
