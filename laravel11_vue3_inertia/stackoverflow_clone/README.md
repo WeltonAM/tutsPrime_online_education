@@ -13,11 +13,11 @@ Stack Overflow Clone for Monolith
 ## Tech Stack
 - PHP 
 - Laravel
+- Passport
 - Vue 
 - SCSS
 - Bootstrap
-- Alpine JS
-- Vite
+- Mixins
 
 ### How to execute the app
 Run the following commands:
